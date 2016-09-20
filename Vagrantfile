@@ -18,6 +18,11 @@ Vagrant.configure("2") do |config|
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
   # config.vm.box_check_update = false
+  # 
+  #config.vm.provision "fix-no-tty", type: "shell" do |s|
+  #  s.privileged = false
+  #  s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
+  #end
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
