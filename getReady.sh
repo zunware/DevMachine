@@ -3,8 +3,8 @@ echo "===== Starting to get Ready ======"
 pwd
 export DEBIAN_FRONTEND=noninteractive
 
-# apt-get update
-# apt-get upgrade
+apt-get update
+apt-get upgrade
 
 apt-get install -y git build-essential
 
