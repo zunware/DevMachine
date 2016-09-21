@@ -8,7 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 apt-get install -y git build-essential
 
-apt-get install -y nginx postgresql libpq-dev libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl
+apt-get install -y nginx postgresql libpq-dev libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl lua5.1 liblua5.1-dev
 
 mkdir devCode; cd devCode
 pwd
@@ -24,6 +24,27 @@ cd "openresty-1.11.2.1"
 ./configure --with-pcre-jit --with-http_postgres_module --with-http_iconv_module
 make
 make install
+rm "openresty-1.11.2.1.tar.gz"
+
+# Install luarocks
+# http://luarocks.org/releases
+cd ~/devCode 
+echo "Downloading Luarocks"
+wget -q "http://keplerproject.github.io/luarocks/releases/luarocks-2.4.0.tar.gz"
+echo "Done donwnloading Luarocks"
+tar xvf "luarocks-2.4.0.tar.gz"
+cd "luarocks-2.4.0"
+./configure
+make build
+sudo make install
+rm "luarocks-2.4.0.tar.gz"
+echo "Done installing luarocks"
+
+
+# Install torch
+git clone https://github.com/torch/distro.git ~/torch --recursive
+cd ~/torch; bash install-deps;
+./install.sh
 
 apt-get install -y zsh
 
